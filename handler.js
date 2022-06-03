@@ -486,11 +486,11 @@ export async function handler(chatUpdate) {
                 else
                     m.exp += xp
                 if (!isPrems && plugin.limit && db.data.users[m.sender].limit < plugin.limit * 1) {
-                    this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
+                    this.reply(m.chat, `Your limit is up, please buy via *${usedPrefix}buy*`, m)
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
-                    this.reply(m.chat, `diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}`, m)
+                    this.reply(m.chat, `level required ${plugin.level} to use this command. Your level ${_user.level}`, m)
                     continue // If the level has not been reached
                 }
                 let extra = {
@@ -546,7 +546,7 @@ export async function handler(chatUpdate) {
                         }
                     }
                     if (m.limit)
-                        m.reply(+m.limit + ' Limit terpakai')
+                        m.reply(+m.limit + ' Used limits')
                 }
                 break
             }
