@@ -174,7 +174,7 @@ ${usedPrefix}disable welcome
       throw false
   }
   m.reply(`
-*${type}* berhasil di *${isEnable ? 'nyala' : 'mati'}kan* ${isAll ? 'untuk bot ini' : isUser ? '' : 'untuk chat ini'}
+*${type}* succeeded in *${isEnable ? 'flame' : 'die'}jug* ${isAll ? 'for this bot' : isUser ? '' : 'for this chat'}
 `.trim())
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
