@@ -15,7 +15,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
         at: + new Date,
         locked: false,
     }
-    m.reply(`Berhasil!`)
+    m.reply(`Succeed!`)
 }
 
 
