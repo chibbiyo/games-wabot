@@ -1,22 +1,16 @@
-import { watchFile, unwatchFile } from 'fs'
-import chalk from 'chalk'
-import { fileURLToPath } from 'url'
+let fs = require('fs')
+let chalk = require('chalk')
 
-global.owner = [
-  ['6281390658325'],
-  ['6282256115584'],
-  ['6281319944687', 'BG', true]
-  // [number, dia creator/owner?, dia developer?]
-] // Put your number here
+global.owner = ['918396901628'] // Put your number here
 global.mods = [] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
-  bg: 'http://bochil.ddns.net',
+  dzx: 'https://api.dhamzxploit.my.id',
   xteam: 'https://api.xteam.xyz',
   zahir: 'https://zahirr-web.herokuapp.com',
-  zeks: 'https://api.zeks.xyz',
+  zeks: 'https://api.zeks.me',
   pencarikode: 'https://pencarikode.xyz',
   LeysCoder: 'https://leyscoders-api.herokuapp.com'
 }
@@ -24,58 +18,42 @@ global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'd90a9e986e18778b',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://api.zeks.xyz': 'apivinz',
+  'https://api.zeks.me': 'apivinz',
   'https://pencarikode.xyz': 'pais',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll'
 }
 
 // Sticker WM
-global.packname = 'wa.me/6285713964963'
-global.author = 'Metro Bot'
+
+const spack = fs.readFileSync("lib/exif.json")
+const stickerpack = JSON.parse(spack)
+if (stickerpack.spackname == '') {
+  var sticker_name = 'I hope you\'re fine'
+  var sticker_author = 'kazukafu'
+} else {
+  var sticker_name = stickerpack.spackname
+  var sticker_author = stickerpack.sauthor
+}
+
+const file_exif = "lib/exif.json"
+fs.watchFile(file_exif, () => {
+  fs.unwatchFile(file_exif)
+  console.log(chalk.redBright("Update 'exif.json'"))
+  delete require.cache[file_exif]
+  require('./lib/exif.json')
+})
+
+global.packname = sticker_name
+global.author = sticker_author
+
 
 global.multiplier = 69 // The higher, The harder levelup
 
-global.rpg = {
-  emoticon(string) {
-    string = string.toLowerCase()
-    let emot = {
-      level: '🧬',
-      limit: '🌌',
-      health: '❤️',
-      exp: '✉️',
-      money: '💵',
-      potion: '🥤',
-      diamond: '💎',
-      common: '📦',
-      uncommon: '🎁',
-      mythic: '🗳️',
-      legendary: '🗃️',
-      pet: '🎁',
-      trash: '🗑',
-      armor: '🥼',
-      sword: '⚔️',
-      wood: '🪵',
-      rock: '🪨',
-      string: '🕸️',
-      horse: '🐎',
-      cat: '🐈',
-      dog: '🐕',
-      fox: '🦊',
-      petFood: '🍖',
-      iron: '⛓️',
-      gold: '👑',
-      emerald: '💚'
-    }
-    let results = Object.keys(emot).map(v => [v, new RegExp(v, 'gi')]).filter(v => v[1].test(string))
-    if (!results.length) return ''
-    else return emot[results[0][0]]
-  }
-}
 
-
-let file = fileURLToPath(import.meta.url)
-watchFile(file, () => {
-  unwatchFile(file)
+let file = require.resolve(__filename)
+fs.watchFile(file, () => {
+  fs.unwatchFile(file)
   console.log(chalk.redBright("Update 'config.js'"))
-  import(`${file}?update=${Date.now()}`)
+  delete require.cache[file]
+  require(file)
 })
