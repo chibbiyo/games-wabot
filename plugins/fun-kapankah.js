@@ -5,9 +5,9 @@ let handler = async (m, { conn }) => conn.reply(m.chat, `
     mentions: m.mentionedJid
 } : {})
 
-handler.help = ['kah'].map(v => 'when' + v + ' <text>?')
+handler.help = ['is it'].map(v => 'when' + v + ' <text>?')
 handler.tags = ['shellfish', 'fun']
 handler.customPrefix = /(\?$)/
-handler.command = /^when(kah)?$/i
+handler.command = /^when(is it)?$/i
 
 export default handler
