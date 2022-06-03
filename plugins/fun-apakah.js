@@ -1,12 +1,12 @@
 let handler = async (m) => m.reply(`
 *Pertanyaan:* ${m.text}
-*Jawaban:* ${['Ya', 'Mungkin iya', 'Mungkin', 'Mungkin tidak', 'Tidak', 'Tidak mungkin'].getRandom()}
+*Jawaban:* ${['Ya', 'Maybe yes', 'Maybe', 'Probably not', 'Do not', 'Impossible'].getRandom()}
   `.trim(), null, m.mentionedJid ? {
   mentions: m.mentionedJid
 } : {})
 
-handler.help = ['apakah <teks>?']
-handler.tags = ['kerang', 'fun']
+handler.help = ['whether <teks>?']
+handler.tags = ['shellfish', 'fun']
 handler.customPrefix = /(\?$)/
 handler.command = /^apakah$/i
 
