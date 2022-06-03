@@ -2,9 +2,9 @@ import db from '../lib/database.js'
 
 let handler = async (m, { text, usedPrefix, command }) => {
     db.data.sticker = db.data.sticker || {}
-    if (!m.quoted) throw `Balas stiker dengan perintah *${usedPrefix + command}*`
+    if (!m.quoted) throw `Reply stickers with commands *${usedPrefix + command}*`
     if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
-    if (!text) throw `Penggunaan:\n${usedPrefix + command} <teks>\n\nContoh:\n${usedPrefix + command} tes`
+    if (!text) throw `Use:\n${usedPrefix + command} <teks>\n\nContoh:\n${usedPrefix + command} tes`
     let sticker = db.data.sticker
     let hash = m.quoted.fileSha256.toString('base64')
     if (sticker[hash] && sticker[hash].locked) throw 'You dont have permission to change this sticker command'
