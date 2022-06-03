@@ -5,9 +5,9 @@ let handler = async (m, { text }) => {
     if (m.quoted && m.quoted.fileSha256) hash = m.quoted.fileSha256.toString('hex')
     if (!hash) throw `Tidak ada hash`
     let sticker = db.data.sticker
-    if (sticker[hash] && sticker[hash].locked) throw 'Kamu tidak memiliki izin untuk menghapus perintah stiker ini'
+    if (sticker[hash] && sticker[hash].locked) throw 'You dont have permission to remove this sticker command'
     delete sticker[hash]
-    m.reply(`Berhasil!`)
+    m.reply(`Succeed!`)
 }
 
 
