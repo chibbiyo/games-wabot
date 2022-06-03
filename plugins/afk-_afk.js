@@ -4,8 +4,8 @@ export function before(m) {
     let user = db.data.users[m.sender]
     if (user.afk > -1) {
         m.reply(`
-  Kamu berhenti AFK${user.afkReason ? ' after ' + user.afkReason : ''}
-  Selama ${(new Date - user.afk).toTimeString()}
+  You quit AFK${user.afkReason ? ' after ' + user.afkReason : ''}
+  For ${(new Date - user.afk).toTimeString()}
   `.trim())
         user.afk = -1
         user.afkReason = ''
