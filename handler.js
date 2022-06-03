@@ -43,17 +43,17 @@ module.exports = {
             if (!isNumber(user.pet)) user.pet = 0
         
             if (!isNumber(user.potion)) user.potion = 0
-            if (!isNumber(user.sampah)) user.sampah = 0
+            if (!isNumber(user.sampah)) user.garbage = 0
             if (!isNumber(user.armor)) user.armor = 0
             
-            if (!isNumber(user.kucing)) user.kucing = 0
-            if (!isNumber(user.kucinglastclaim)) user.kucinglastclaim = 0
-            if (!isNumber(user.kuda)) user.kuda = 0
-            if (!isNumber(user.kudalastclaim)) user.kudalastclaim = 0
-            if (!isNumber(user.rubah)) user.rubah = 0
-            if (!isNumber(user.rubahlastclaim)) user.rubahlastclaim = 0
-            if (!isNumber(user.anjing)) user.anjing = 0
-            if (!isNumber(user.anjinglastclaim)) user.anjinglastclaim = 0
+            if (!isNumber(user.kucing)) user.cat = 0
+            if (!isNumber(user.kucinglastclaim)) user.catlastclaim = 0
+            if (!isNumber(user.kuda)) user.Riding = 0
+            if (!isNumber(user.kudalastclaim)) user.Ridinglastclaim = 0
+            if (!isNumber(user.rubah)) user.fox = 0
+            if (!isNumber(user.rubahlastclaim)) user.foxlastclaim = 0
+            if (!isNumber(user.anjing)) user.Dog = 0
+            if (!isNumber(user.anjinglastclaim)) user.Doglastclaim = 0
 
             if (!'banned' in user) user.banned = false
             if (!'bannedReason' in user) user.bannedReason = ''
@@ -62,17 +62,17 @@ module.exports = {
             if (!isNumber(user.afk)) user.afk = -1
             if (!'afkReason' in user) user.afkReason = ''
         
-            if (!isNumber(user.anakkucing)) user.anakkucing = 0
-            if (!isNumber(user.anakkuda)) user.anakkuda = 0
-            if (!isNumber(user.anakrubah)) user.anakrubah = 0
-            if (!isNumber(user.anakanjing)) user.anakanjing = 0
-            if (!isNumber(user.makananpet)) user.makananpet = 0
+            if (!isNumber(user.childcat)) user.childcat = 0
+            if (!isNumber(user.childRiding)) user.childRiding = 0
+            if (!isNumber(user.childfox)) user.childfox = 0
+            if (!isNumber(user.childDog)) user.childDog = 0
+            if (!isNumber(user.foodpet)) user.foodpet = 0
 
             if (!isNumber(user.antispam)) user.antispam = 0
             if (!isNumber(user.antispamlastclaim)) user.antispamlastclaim = 0
 
-            if (!isNumber(user.kayu)) user.kayu = 0
-            if (!isNumber(user.batu)) user.batu = 0
+            if (!isNumber(user.wood)) user.wood = 0
+            if (!isNumber(user.stone)) user.stone = 0
             if (!isNumber(user.string)) user.string = 0
             if (!isNumber(user.sword)) user.sword = 0
             if (!isNumber(user.sworddurability)) user.sworddurability = 0
@@ -113,30 +113,30 @@ module.exports = {
             legendary: 0,
             pet: 0,
             potion: 0,
-            sampah: 0,
+            garbage: 0,
             armor: 0,
-            kucing: 0,
-            kucinglastclaim: 0,
-            kuda: 0,
-            kudalastclaim: 0,
-            rubah: 0,
-            rubahlastclaim: 0,
-            anjing: 0,
-            anjinglastclaim: 0,
+            cat: 0,
+            catlastclaim: 0,
+            Riding: 0,
+            Ridinglastclaim: 0,
+            fox: 0,
+            foxlastclaim: 0,
+            Dog: 0,
+            Doglastclaim: 0,
             Banneduser: false,
             BannedReason: '',
             warn: 0,
             afk: -1,
             afkReason: '',
-            anakkucing: 0,
-            anakkuda: 0,
-            anakrubah: 0,
-            anakanjing: 0,
-            makananpet: 0,
+            childcat: 0,
+            childRiding: 0,
+            childfox: 0,
+            childDog: 0,
+            foodpet: 0,
             antispam: 0,
             antispamlastclaim: 0,
-            kayu: 0,
-            batu: 0,
+            wood: 0,
+            stone: 0,
             string: 0,
             sword: 0,
             sworddurability: 0,
@@ -282,14 +282,14 @@ module.exports = {
           if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
             let chat = global.DATABASE._data.chats[m.chat]
             let user = global.DATABASE._data.users[m.sender]
-            if (!['unbanchat.js', 'link.js', 'pengumuman.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
+            if (!['unbanchat.js', 'link.js', 'announcement.js', 'creator.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
             if (!['unbanuser.js', 'inv.js', 'link.js', 'creator.js', 'profile.js'].includes(name) && user && user.banned && !isROwner) {
-              if (!opts['msgifbanned']) m.reply(`*ANDA TERBANNED* ${user.bannedReason ? `\nKarena *${user.bannedReason}*` : ''}
+              if (!opts['msgifbanned']) m.reply(`*YOU'RE BANNED* ${user.bannedReason ? `\nBecause *${user.bannedReason}*` : ''}
 
-Hubungi: 
+Contact: 
 ${global.owner.map((v, i) => '*Owner ' + (i + 1) + ':* wa.me/' + v).join('\n') + '\n\n' + global.mods.map((v, i) => '*Moderator ' + (i + 1) + ':* wa.me/' + v).join('\n')}
 
-Kuy join group Official *${conn.getName(this.user.jid)}*: 
+Or join group Official *${conn.getName(this.user.jid)}*: 
 ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
 `.trim())
               return
@@ -339,7 +339,7 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
           if (xp > 99999999999) m.reply('Ngecit -_-') // Hehehe
           else m.exp += xp
           if (!isPrems && plugin.limit && global.DATABASE._data.users[m.sender].limit < plugin.limit * 1) {
-            this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
+            this.reply(m.chat, `Your limit is running out, please buy via *${usedPrefix}buy*`, m)
             continue // Limit habis
           }
           let extra = {
@@ -377,7 +377,7 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
               for (let key of Object.values(global.APIKeys))
                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
                 if (DevMode && text.length > 100) {
-                  for (let jid of Object.entries(global.Owner).filter(v => v[1].isDev).map(v => v[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) m.reply(`*file:* ${m.plugin}\n*Nomor:* ${m.sender}\n*Text:* ${m.text}\n\n\`\`\`${text}\`\`\``, jid)
+                  for (let jid of Object.entries(global.Owner).filter(v => v[1].isDev).map(v => v[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) m.reply(`*file:* ${m.plugin}\n*Number:* ${m.sender}\n*Text:* ${m.text}\n\n\`\`\`${text}\`\`\``, jid)
                 }
                 m.reply(text)
             }
@@ -390,7 +390,7 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
                 console.error(e)
               }
             }
-            if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+            if (m.limit) m.reply(+ m.limit + ' Used limits')
           }
           break
         }
@@ -481,9 +481,9 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
     let chat = global.DATABASE._data.chats[m.key.remoteJid]
     if (chat.delete) return
     await this.reply(m.key.remoteJid, `
-Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
+Detected @${m.participant.split`@`[0]} have deleted the message
 
-Untuk mematikan fitur ini, ketik
+To turn off this feature, type
 *.enable delete*
 `.trim(), m.message, {
       contextInfo: {
@@ -521,21 +521,21 @@ Untuk mematikan fitur ini, ketik
       
       await this.send(`${tag},${JSON.stringify(NodePayload)}`)
     }
-    await this.sendMessage(from, 'Maaf, Tolong jangan telfon BOT!!', MessageType.extendedText)
+    await this.sendMessage(from, 'Sorry, Please dont call the BOT!!', MessageType.extendedText)
   }
 }
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-    owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-    mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-    premium: 'Perintah ini hanya untuk member _*Premium*_ !',
-    group: 'Perintah ini hanya dapat digunakan di grup!',
-    private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-    admin: 'Perintah ini hanya untuk *Admin* grup!',
-    botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*'
+    rowner: 'This command can only be used by _*OWWNER!1!1!*_',
+    owner: 'This command can only be used by _*Owner Bot*_!',
+    mods: 'This command can only be used by _*Moderator*_ !',
+    premium: 'This command is only for _*Premium*_ members!',
+    group: 'This command can only be used in groups!',
+    private: 'This command can only be used in Private Chat!',
+    admin: 'This command is only for *Admins* groups!',
+    botAdmin: 'Make the bot a *Admin* to use this command!',
+    unreg: 'Please register to use this feature by typing:\n\n*#daftar name.age*\n\nContoh: *#daftar Sam.16*'
   }[type]
   if (msg) return m.reply(msg)
 }
