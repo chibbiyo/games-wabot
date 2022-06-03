@@ -7,8 +7,8 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
         mentions: m.mentionedJid
     } : {})
 }
-handler.help = ['gay', 'pintar', 'cantik', 'ganteng', 'gabut', 'gila', 'lesbi', 'stress', 'bucin', 'jones', 'sadboy'].map(v => 'how' + v + ' siapa?')
-handler.tags = ['kerang', 'fun']
-handler.command = /^how(gay|pintar|cantik|ganteng|gabut|gila|lesbi|stress?|bucin|jones|sadboy)/i
+handler.help = ['gay', 'smart', 'beautiful', 'handsome','cold', 'crazy', 'lesbian', 'stress', 'famous', 'simp', 'sadboy'].map(v => 'how' + v + ' siapa?')
+handler.tags = ['shellfish', 'fun']
+handler.command = /^how(gay|smart|beautiful|handsome|cold|crazy|lesbian|stress?|famous|simp|sadboy)/i
 
 export default handler
