@@ -8,6 +8,6 @@ let handler = async (m) => m.reply(`
 handler.help = ['whether <teks>?']
 handler.tags = ['shellfish', 'fun']
 handler.customPrefix = /(\?$)/
-handler.command = /^apakah$/i
+handler.command = /^whether$/i
 
 export default handler
