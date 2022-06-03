@@ -2,7 +2,7 @@ import db from '../lib/database.js'
 
 let handler = async (m, { conn }) => {
     conn.reply(m.chat, `
-*DAFTAR HASH*
+*HASH LIST*
 \`\`\`
 ${Object.entries(db.data.sticker).map(([key, value], index) => `${index + 1}. ${value.locked ? `(Terkunci) ${key}` : key} : ${value.text}`).join('\n')}
 \`\`\`
