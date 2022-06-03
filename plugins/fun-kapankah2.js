@@ -1,12 +1,12 @@
 let handler = async (m, { conn, command, text }) => conn.reply(m.chat, `
-*Pertanyaan:* ${command} ${text}
-*Jawaban:* ${(10).getRandom()} ${['detik', 'menit', 'jam', 'hari', 'minggu', 'bulan', 'tahun', 'dekade', 'abad'].getRandom()} lagi ...
+*Question:* ${command} ${text}
+*Answer:* ${(10).getRandom()} ${['second', 'minute', 'hour', 'day', 'Sunday', 'moon', 'year', 'decade', 'century'].getRandom()} lagi ...
   `.trim(), m, m.mentionedJid ? {
   mentions: m.mentionedJid
 } : {})
 
-handler.help = ['', 'kah'].map(v => 'kapan' + v + ' <text>?')
-handler.tags = ['kerang', 'fun']
-handler.command = /^kapan(kah)?$/i
+handler.help = ['', 'is it'].map(v => 'when' + v + ' <text>?')
+handler.tags = ['shellfish', 'fun']
+handler.command = /^when(is it)?$/i
 
 export default handler
